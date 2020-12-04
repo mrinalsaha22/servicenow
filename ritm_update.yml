@@ -1,0 +1,25 @@
+- name: parser example
+  hosts: all
+  gather_facts: no
+  connection: local
+
+  
+
+  tasks:
+    - name: variable set
+      include_vars: vars.yml
+     
+
+    - name: start the change
+      snow_record:
+       state: present
+       table: sc_req_item
+       number:  "{{ req_item_number }}"
+       username: "{{ username }}"
+       password: "{{ password }}"
+       instance: "{{ instance }}"
+
+       data:
+         state: 2
+         work_notes: "Starting the requested item {{ req_item_number }} Request number {{ request_number }}"
+        

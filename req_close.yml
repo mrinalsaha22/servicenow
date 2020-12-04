@@ -1,0 +1,22 @@
+- name: request closed
+  hosts: all
+  gather_facts: no
+  connection: local
+
+
+
+  tasks:
+
+
+   - name: Closing the request
+     snow_record:
+      state: present
+      table: sc_request
+      number:  "{{ request_number }}"
+      username: "admin"
+      password: "Cq8AlqODRgd2"
+      instance: "dev86612"
+      data:
+        request_state: 3
+        
+        
